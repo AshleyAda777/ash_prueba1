@@ -1,0 +1,123 @@
+package com.example.ash_prueba1
+
+import android.os.Bundle
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Email
+import androidx.compose.material.icons.filled.Phone
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import com.example.ash_prueba1.ui.theme.Ash_prueba1Theme
+
+class MainActivity : ComponentActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContent {
+            Ash_prueba1Theme {
+
+                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+                    TarjetaPresentacion(
+                        modifier = Modifier
+                            .padding(innerPadding)
+                            .fillMaxSize()
+                            .padding(16.dp),
+                    )
+                }
+            }
+        }
+    }
+}
+
+@Composable
+fun TarjetaPresentacion(modifier: Modifier = Modifier) {
+
+    Box(
+        modifier = modifier
+            .background(
+                color = Color(0xFFBBDEFB),
+                shape = RoundedCornerShape(16.dp)
+            )
+            .padding(16.dp),
+        contentAlignment = Alignment.Center
+    ) {
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center
+        ) {
+            Text(
+                text = "Ashley Adaros",
+                style = MaterialTheme.typography.headlineMedium.copy(
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 24.sp,
+                    color = Color(0xFF0D47A1)
+                )
+            )
+            Text(
+                text = "Desarrollador Android",
+                style = MaterialTheme.typography.bodyLarge.copy(
+                    fontSize = 18.sp,
+                    color = Color(0xFF0D47A1),
+                )
+            )
+
+            Spacer(modifier = Modifier.height(16.dp))
+
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Icon(
+                    imageVector = Icons.Default.Phone,
+                    contentDescription = "Teléfono",
+                    tint = Color(0xFF0D47A1)
+                )
+                Spacer(modifier = Modifier.width(8.dp))
+                Text(
+                    text = "+56 99996666",
+                    style = MaterialTheme.typography.bodyLarge.copy(
+                        fontSize = 16.sp,
+                        color = Color.Black
+                    )
+                )
+            }
+
+            Spacer(modifier = Modifier.height(8.dp))
+
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Icon(
+                    imageVector = Icons.Default.Email,
+                    contentDescription = "Email",
+                    tint = Color(0xFF0D47A1)
+                )
+                Spacer(modifier = Modifier.width(8.dp))
+                Text(
+                    text = "ash@gmail.com",
+                    style = MaterialTheme.typography.bodyLarge.copy(
+                        fontSize = 16.sp,
+                        color = Color.Black
+                    )
+                )
+            }
+        }
+    }
+}
+
+@Preview
+@Composable
+fun PreviewTarjetaPresentacion() {
+    Ash_prueba1Theme {
+        TarjetaPresentacion(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(16.dp)
+        )
+    }
+}
